@@ -1,4 +1,4 @@
-const { getAllDataDb } = require('../repository/user.repository');
+const { getAllDataDb, getDataByIdDB } = require('../repository/user.repository');
 
 async function getAllData() {
     const data = await getAllDataDb();
@@ -6,4 +6,9 @@ async function getAllData() {
     return data;
 }
 
-module.exports = { getAllData };
+async function getDataById(id) {
+    const data = await getDataByIdDB(id);
+    if (!data.length) throw new Error('такого id нет');
+    return data;
+}
+module.exports = { getAllData, getDataById };
