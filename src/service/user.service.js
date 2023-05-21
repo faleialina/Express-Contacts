@@ -1,4 +1,4 @@
-const { getAllDataDb, getDataByIdDB } = require('../repository/user.repository');
+const { getAllDataDb, getDataByIdDB, createDataDb, updateDataDb, deleteDataDb } = require('../repository/user.repository');
 
 async function getAllData() {
     const data = await getAllDataDb();
@@ -11,4 +11,22 @@ async function getDataById(id) {
     if (!data.length) throw new Error('такого id нет');
     return data;
 }
-module.exports = { getAllData, getDataById };
+
+async function createData(name, surname, birth, city, age) {
+    const data = await createDataDb(name, surname, birth, city, age);
+    if (!data.length) throw new Error('БД не заполнена');
+    return data;
+}
+
+async function updateData(id, name, surname, birth, city, age) {
+    const data = await updateDataDb(id, name, surname, birth, city, age);
+    if (!data.length) throw new Error('такого id нет');
+    return data;
+}
+
+async function deleteData(id) {
+    const data = await deleteDataDb(id);
+    if (!data.length) throw new Error('такого id нет');
+    return data;
+}
+module.exports = { getAllData, getDataById, createData, updateData, deleteData };
