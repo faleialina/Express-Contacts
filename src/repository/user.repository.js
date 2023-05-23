@@ -9,8 +9,7 @@ async function getAllDataDb() {
 
 async function getDataByIdDB(id) {
     const client = await pool.connect();
-    const sql =
-        'SELECT  users.id, users.name, users.surname, users_info.birth FROM users_info JOIN users ON users.info_id = users_info.id WHERE users.id =$1';
+    const sql ='SELECT  users.id, users.name, users.surname, users_info.birth FROM users_info JOIN users ON users.info_id = users_info.id WHERE users.id =$1';
     const result = (await client.query(sql, [id])).rows;
     return result;
 }

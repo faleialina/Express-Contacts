@@ -29,4 +29,5 @@ async function deleteData(id) {
     if (!data.length) throw new Error('такого id нет');
     return data;
 }
+
 module.exports = { getAllData, getDataById, createData, updateData, deleteData };
