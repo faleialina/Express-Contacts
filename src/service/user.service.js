@@ -1,4 +1,4 @@
-const { getAllDataDb, getDataByIdDB, createDataDb, updateDataDb, deleteDataDb } = require('../repository/user.repository');
+const { getAllDataDb, getDataByIdDB, createDataDb, updateDataDb, deleteDataDb, patchDataDb } = require('../repository/user.repository');
 
 async function getAllData() {
     const data = await getAllDataDb();
@@ -30,4 +30,10 @@ async function deleteData(id) {
     return data;
 }
 
-module.exports = { getAllData, getDataById, createData, updateData, deleteData };
+async function patchData(id, clientData){
+    const data = await patchDataDb(id, clientData);
+    return data;
+
+}
+
+module.exports = { getAllData, getDataById, createData, updateData, deleteData, patchData };
