@@ -54,7 +54,7 @@ route.delete('/:id', isValidationUserId, async (req, res) => {
     }
 });
 
-route.patch('/:id', async (req, res) => {
+route.patch('/:id', isValidationUserId, async (req, res) => {
     try {
         const { id } = req.params;
         const clientData = req.body;
