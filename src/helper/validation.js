@@ -1,7 +1,7 @@
 function isValidationUserId(req, res, next) {
     const { id } = req.params;
-    if (isNaN(id)) throw new Error('id не число');
-    if (id <= 0) throw new Error('id отрицательное число');
+    if (isNaN(id)) throw new Error('id is not a number');
+    if (id <= 0) throw new Error('id is a negative number');
 
     next();
 
@@ -9,11 +9,11 @@ function isValidationUserId(req, res, next) {
 
 function isValidationUserBody(req, res, next) {
     const { name, surname, birth, city, age } = req.body;
-    if (!name) throw new Error('name отсутствует');
-    if (!surname) throw new Error('surname отсутствует');
-    if (!birth) throw new Error('birth отсутствует');
-    if (!city) throw new Error('city отсутствует');
-    if (age <= 0) throw new Error('age отрицательное');
+    if (!name) throw new Error('name is missing');
+    if (!surname) throw new Error('surname is missing');
+    if (!birth) throw new Error('birth is missing');
+    if (!city) throw new Error('city is missing');
+    if (age <= 0) throw new Error('age is missing');
 
     next();
 }
